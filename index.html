@@ -34,31 +34,35 @@
             flex-direction: column;
         }
 
-        .homepage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: url('your-background-image.jpg') no-repeat center center/cover;
-            width: 100vw;
-            height: 100vh;
-            padding: 20px; /* Reduced padding to fit more content */
-            transform: scale(0.9); /* Zooms out slightly */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('your-background-image.jpg') no-repeat center center/cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px; /* Adjusted for better spacing */
 }
 
-        .container {
-         max-width: 600px;
-         background: rgba(0, 0, 0, 0.85);
-         padding: 25px;
-         border-radius: 10px;
-         text-align: center;
+.container {
+    max-width: 600px;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 body {
-    transform: scale(0.95); /* Zooms out everything slightly */
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents any scrolling */
 }
-
         .logo {
             width: 180px;
             margin-bottom: 20px;
