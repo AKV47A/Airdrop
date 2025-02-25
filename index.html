@@ -95,36 +95,31 @@
             font-weight: bold;
             transition: all 0.3s ease-in-out;
         }
-
         .btn:hover {
             transform: scale(1.05);
         }
-
 .loading-screen {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%; /* This will fix the black bars */
+    width: 100vw; /* Ensure full screen width */
     height: 100vh;
     overflow: hidden;
 }
-
 .loading-screen video {
-    width: 100vw; /* Full screen width */
-    height: 100vh; /* Full screen height */
-    object-fit: cover; /* Ensures no black bars */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures it covers the full screen */
 }
-
 .passphrase-screen {
     display: none;
     flex-direction: column;
-    width: 100%; /* This will fix the alignment */
-    height: 100vh;
+    width: 100vw; /* Ensure full width */
+    height: 100vh; /* Full height */
     justify-content: center;
     align-items: center;
     background: #ffffff;
 }
-
 .passphrase-container {
     width: 90%; /* Adjusts width dynamically */
     max-width: 500px; /* Prevents it from becoming too wide */
