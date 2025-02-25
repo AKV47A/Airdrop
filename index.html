@@ -164,12 +164,17 @@
 <body>
 <style>
     body {
-        text-align: center; /* Centers all content */
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* Prevents horizontal scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100vw;
     }
-
     /* Ensures all content inside stays centered */
     .container {
         display: flex;
