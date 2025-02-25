@@ -106,16 +106,31 @@
     height: 100vh;
     overflow: hidden;
 }
-.loading-screen video {
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Ensures it covers the full screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.loading-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures no black bars */
 }
 .passphrase-screen {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
-    width: 100vw; /* Ensure full width */
-    height: 100vh; /* Full height */
     justify-content: center;
     align-items: center;
     background: #ffffff;
