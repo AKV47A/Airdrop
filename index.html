@@ -3,16 +3,16 @@
 <head>
     <style>
     body {
-    overflow: hidden; /* No scrolling */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Makes everything fit within the screen */
-    transform: scale(0.9); /* Shrinks everything slightly */
-    transform-origin: top center; /* Ensures proper alignment */
+    min-height: 100vh;
+    text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 0 20px; /* Adds space on both sides */
+    overflow-x: hidden;
+    width: 100vw;
     }
     </style>
     <meta charset="UTF-8">
@@ -102,19 +102,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw; /* Ensure full screen width */
+    width: 100%;
     height: 100vh;
-    overflow: hidden;
-}
-.loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
 }
 .loading-screen video {
@@ -127,7 +116,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -143,16 +132,15 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
-
-        .passphrase-container {
-            max-width: 500px;
-            text-align: left;
-            padding: 30px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    .passphrase-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    text-align: center; /* Ensures proper centering */
         }
-
         .passphrase-title {
             font-size: 22px;
             font-weight: bold;
