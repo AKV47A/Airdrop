@@ -40,16 +40,24 @@
             align-items: center;
             justify-content: center;
             background: url('your-background-image.jpg') no-repeat center center/cover;
-            padding: 40px;
-        }
+            width: 100vw;
+            height: 100vh;
+            padding: 20px; /* Reduced padding to fit more content */
+            transform: scale(0.9); /* Zooms out slightly */
+}
 
         .container {
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
+         max-width: 600px;
+         background: rgba(0, 0, 0, 0.85);
+         padding: 25px;
+         border-radius: 10px;
+         text-align: center;
+}
+
+body {
+    transform: scale(0.95); /* Zooms out everything slightly */
+    overflow: hidden;
+}
 
         .logo {
             width: 180px;
