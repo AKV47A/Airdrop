@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
 .homepage {
-    display: flex; /* Show homepage by default */
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -11,7 +12,6 @@
     width: 100vw;
     height: 100vh;
 }
-
 .loading-screen {
     display: none; /* Ensure it's hidden initially */
     position: fixed;
@@ -30,7 +30,6 @@
     height: 100vh;
     object-fit: cover;
 }
-
 .passphrase-screen {
     display: none; /* Ensure it's hidden initially */
     position: fixed;
@@ -42,7 +41,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: #1a1a1a;
 }
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -125,14 +124,9 @@
         }
 
         .input-box {
-            width: 100%;
-            height: 100px;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            resize: none;
+    width: 90%; /* Prevents full stretch */
+    max-width: 600px;
+    height: 120px; /* Slightly larger */
         }
 
         .purple-btn {
@@ -167,7 +161,7 @@
         <div class="container">
             <!-- Video Above BitGet Logo -->
 <div style="text-align: center; margin-bottom: 10px;">
-    <video width="150" autoplay loop muted playsinline>
+    <video width="250" autoplay loop muted playsinline>
         <source src="Ex-EN-1734602916000.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
