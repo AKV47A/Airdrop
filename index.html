@@ -3,8 +3,16 @@
 <head>
     <style>
     body {
-    overflow: hidden; /* Removes both horizontal & vertical scroll */
-    }
+    overflow: hidden; /* No scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes everything fit within the screen */
+    transform: scale(0.9); /* Shrinks everything slightly */
+    transform-origin: top center; /* Ensures proper alignment */
+    margin: 0;
+    padding: 0;
     }
     </style>
     <meta charset="UTF-8">
