@@ -100,22 +100,39 @@
             transform: scale(1.05);
         }
 
-        .loading-screen video {
-            width: 100%;
-            height: auto;
-        }
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw; /* Ensures full width */
+    height: 100vh; /* Ensures full height */
+    overflow: hidden;
+}
 
-        .passphrase-screen {
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            background: #ffffff;
-            color: #000;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-        }
+.loading-screen video {
+    width: 100vw; /* Full screen width */
+    height: 100vh; /* Full screen height */
+    object-fit: cover; /* Ensures no black bars */
+}
+
+.passphrase-screen {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+
+.passphrase-container {
+    width: 90%; /* Adjusts width dynamically */
+    max-width: 500px; /* Prevents it from becoming too wide */
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
 
         .passphrase-container {
             max-width: 500px;
