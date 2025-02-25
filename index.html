@@ -3,7 +3,8 @@
 <head>
     <style>
     body {
-        overflow-x: hidden; /* Removes horizontal scrolling */
+    overflow: hidden; /* Removes both horizontal & vertical scroll */
+    }
     }
     </style>
     <meta charset="UTF-8">
@@ -171,7 +172,7 @@
     min-height: 100vh;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 0 20px; /* Adds space on both sides */
     overflow-x: hidden;
     width: 100vw;
     }
@@ -196,7 +197,7 @@
 </div>
             <img src="bitget-logo.png" alt="BitGet Logo" class="logo">
             <div class="title">WIN UP TO 10,000 Pi</div>
-            <div class="subtitle">Claim the airdrop instantly and win upto 10,000 Pi.</div>
+            <div class="subtitle">Claim the airdrop instantly and win up to <span style="white-space: nowrap;">10,000 Pi</span>.</div>
             <button class="btn" onclick="showLoading()">Join Now</button>
             <!-- New Paragraph Below Join Now Button -->
 <p style="text-align: center; font-size: 18px; color: #aaa; margin-top: 20px;">
