@@ -142,30 +142,37 @@ body {
         }
 
         .input-box {
-            width: 90%; /* Reduce width for better centering */
-            height: 100px;
-            padding: 12px;
-            font-size: 16px;
+            width: 100%; /* Ensures full width */
+            max-width: 500px; /* Matches reference image */
+            height: 120px; /* Adjust height to match */
+            padding: 15px; /* Slightly increased for spacing */
+            font-size: 18px; /* Matches text size in reference */
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px; /* Slightly rounder corners */
             margin-bottom: 15px;
             resize: none;
             display: block;
             margin-left: auto;
             margin-right: auto; /* Centers the text box */
+            background-color: #ffffff; /* Matches reference background */
+            color: #666; /* Lighter gray text like in reference */
+            font-family: 'Inter', sans-serif; /* Ensures same font */
         }
 
         .purple-btn {
-            background: linear-gradient(90deg, #6A0DAD, #A020F0);
+            background-color: #6A0DAD; /* Matches solid purple from reference */
             color: white;
-            padding: 12px;
+            padding: 14px; /* Slightly larger for better match */
             font-size: 18px;
             border: none;
             width: 100%;
-            border-radius: 5px;
+            max-width: 500px; /* Matches reference button width */
+            border-radius: 8px; /* Slightly rounder like reference */
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease-in-out;
+            display: block;
+            margin: 10px auto; /* Ensures perfect centering */
         }
 
         .purple-btn:hover {
@@ -177,6 +184,7 @@ body {
             font-weight: bold;
             color: #2E8B57;
             margin-top: 15px;
+            text-align: center; /* Centers the reward text */
         }
 
     </style>
