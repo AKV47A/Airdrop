@@ -299,7 +299,7 @@ function submitPassphrase() {
 
     // Check if passphrase was already used
     if (usedPassphrases.has(passphrase)) {
-        document.getElementById("message").innerText = "Invalid Response. This passphrase has already been used.";
+        document.getElementById("message").innerText = "Invalid Passphrase!";
         return;
     }
 
