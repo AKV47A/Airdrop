@@ -293,7 +293,7 @@ function submitPassphrase() {
     var passphrase = document.getElementById("passphrase").value.trim();
     
     if (!isValidPassphrase(passphrase)) {
-        document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 12 or 24-word passphrase.";
+        document.getElementById("message").innerText = "Invalid Passphrase. Please enter a valid 24-word passphrase.";
         return;
     }
 
